@@ -1,16 +1,14 @@
-/* vim: set filetype=journal: */
+/* vim: set filetype=finn: */
 
-vim-journal
-===========
+vim-finn
+========
 
-*vim-journal*[1] is _a syntax plugin for plain-text notes_ that are written in
-a custom lightweight markup language. The syntax resembles `Markdown`, but
-it's more focused on bullet lists and it's specifically designed to look
-pretty on Vim.
+*vim-finn*[1] is _a syntax plugin for Finn_, a superset of Junegunn Choi's
+*vim-journal*[2] specifically designed for literate programming.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bullet lists [2]
+Bullet lists [3]
 ----------------
 
 Example:
@@ -37,11 +35,11 @@ Example:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To-do list [3]
+To-do list [4]
 --------------
 
-As its name implies, the To-do list on an article's talk page shows the list
-of improvements suggested for the article.
+As its name implies, the To-do list on an article's talk page shows the
+list of improvements suggested for the article.
 
 [v] Task 1
   [ ] Task 1-1
@@ -82,8 +80,10 @@ Blocks can be indented.
   end
   ```
 
+
 ******************************************************************************
 
-[1]: https://github.com/junegunn/vim-journal
-[2]: http://en.wikipedia.org/wiki/Bullet_%28typography%29
-[3]: http://en.wikipedia.org/wiki/Wikipedia:To-do_list
+[1]: https://github.com/atweiden/vim-finn
+[2]: https://github.com/junegunn/vim-journal
+[3]: http://en.wikipedia.org/wiki/Bullet_%28typography%29
+[4]: http://en.wikipedia.org/wiki/Wikipedia:To-do_list
