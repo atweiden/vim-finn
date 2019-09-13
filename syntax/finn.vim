@@ -242,6 +242,10 @@ syn region underline matchgroup=underlineSign start="\(^\|\s\)\zs_\ze\S" end="\S
 hi def link underline Underlined
 hi def link underlineSign NonText
 
+syn region sectionalLink oneline matchgroup=sectionalLinkSign start="|\ze[^[:blank:]*]" end="[^[:blank:]*]\zs|" contains=@Spell
+hi def link sectionalLink Identifier
+hi def link sectionalLinkSign NonText
+
 syn match file @\(^\|\s\)\zs\(file://\)\?[/~].\{-}\ze\(:\|\\\@<!\s\|$\)@
 hi def link file PreProc
 
