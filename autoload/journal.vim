@@ -1,4 +1,5 @@
 " Copyright (c) 2015 Junegunn Choi
+" Copyright (c) 2016 Andy Weidenbaum
 "
 " MIT License
 "
@@ -24,4 +25,3 @@
 function! journal#_bullets()
   return '\([-@#$*:xo+>=!~]\|[0-9]\+[.:)]\|<[-=]\|[-=]>\|\[[ xvo*!+=-]\]\)\s'
 endfunction
-
