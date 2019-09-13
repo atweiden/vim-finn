@@ -96,4 +96,3 @@ endfunction
 
 inoremap <buffer> <expr> <esc><cr> <sid>bullet()
 nnoremap <buffer> <expr> <esc><cr> 'A'.<sid>bullet()
-

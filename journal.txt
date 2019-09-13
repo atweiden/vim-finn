@@ -87,4 +87,3 @@ Blocks can be indented.
 [1]: https://github.com/junegunn/vim-journal
 [2]: http://en.wikipedia.org/wiki/Bullet_%28typography%29
 [3]: http://en.wikipedia.org/wiki/Wikipedia:To-do_list
-

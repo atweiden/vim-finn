@@ -365,4 +365,3 @@ call s:init()
 call s:detect(1, '$')
 
 let b:current_syntax = 'finn'
-
