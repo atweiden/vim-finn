@@ -1,5 +1,5 @@
-" Copyright (c) 2015 Junegunn Choi
-" Copyright (c) 2016 Andy Weidenbaum
+" Copyright (c) 2017 Junegunn Choi
+" Copyright (c) 2017 Andy Weidenbaum
 "
 " MIT License
 "
