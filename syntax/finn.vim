@@ -227,7 +227,7 @@ syn region blockCode matchgroup=snippetDelimiter start="^\s*\zs--\+[[:alnum:]_]*
 hi def link blockCode String
 
 syn region blockSectional matchgroup=snippetDelimiter start="^\s*\zs```\s[^[:return:]]*$" end="^\s*\zs```$"
-syn region blockSectional matchgroup=snippetDelimiter start="^\s*\zs---\s[^[:return:]]*$" end="^\s*\zs---$"
+syn region blockSectional matchgroup=snippetDelimiter start="^\s*\zs--\+\s[^[:return:]]*$" end="^\s*\zs--\+$"
 hi def link blockSectional String
 
 syn region strong oneline matchgroup=strongSign start="\*\ze[^[:blank:]]" end="[^[:blank:]]\zs\*" contains=@Spell
