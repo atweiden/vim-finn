@@ -1,3 +1,3 @@
 # vim-finn
 
-![](http://i.imgur.com/XwXF2Pt.png)
+![](https://camo.githubusercontent.com/dbd41690500ba05ec8a1b253309d3c931e8a8e4a/687474703a2f2f692e696d6775722e636f6d2f587758463250742e706e67)
