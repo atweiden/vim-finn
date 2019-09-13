@@ -22,11 +22,7 @@
 " OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 " WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-setlocal autoindent
-setlocal formatoptions=tcroqn1
-silent! setlocal formatoptions+=j
 setlocal comments=bf:-,bf:*,bf:@,bf:$,bf:o,bf:x,bf:+,bf:=,bf:>,bf:#,bf:::
-" setlocal synmaxcol=160
 
 function! s:hl()
   return map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
