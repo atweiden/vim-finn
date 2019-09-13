@@ -22,12 +22,4 @@
 " OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 " WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function! s:finn()
-  " TODO
-  let dirs = get(g:, 'finn#dirs', ['notes', 'finn.d'])
-  if index(dirs, expand('%:p:h:t')) >= 0
-    set filetype=finn
-  endif
-endfunction
-
-au BufRead,BufNewFile *.txt call s:finn()
+au BufRead,BufNewFile *.finn set filetype=finn
