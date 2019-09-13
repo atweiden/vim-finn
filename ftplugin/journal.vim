@@ -76,7 +76,7 @@ function! s:bullet()
   let line = getline('.')
   let indent = matchstr(line, '^\s*')
   let rest = line[len(indent):]
-  let bullet = matchstr(rest, '^'.journal#_bullets().'\+')
+  let bullet = matchstr(rest, '^'.finn#_bullets().'\+')
   if empty(bullet)
     return "\<cr>"
   elseif bullet =~ '^[0-9]'

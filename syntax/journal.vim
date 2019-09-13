@@ -54,14 +54,14 @@ function! s:compare_h(c1, c2)
 endfunction
 
 let s:default_color_filter = [
-  \ function('journal#color#filter#readable'),
-  \ function('journal#color#filter#low_saturation')]
+  \ function('finn#color#filter#readable'),
+  \ function('finn#color#filter#low_saturation')]
 
 function! s:extract_colors(max_count)
   let blacklist = s:blacklist()
   let defnormal = &background == 'dark' ? 253 : 233
   let normhsl = s:rgbhsl(empty(blacklist) ? defnormal : keys(blacklist)[0])
-  for c in get(g:, 'journal#blacklist', [])
+  for c in get(g:, 'finn#blacklist', [])
     let blacklist[c] = 1
   endfor
 
@@ -78,7 +78,7 @@ function! s:extract_colors(max_count)
   endfor
 
   let colors = keys(all_colors)
-  for Fn in copy(get(g:, 'journal#color_filters', s:default_color_filter))
+  for Fn in copy(get(g:, 'finn#color_filters', s:default_color_filter))
     let filtered = []
     for fg in colors
       let hsl = s:rgbhsl(fg)
@@ -175,7 +175,7 @@ function! s:rgbhsl(color)
   return hsl
 endfunction
 
-let s:bullets = journal#_bullets()
+let s:bullets = finn#_bullets()
 execute 'syn region indent0 start=/^'.s:bullets.'/ end=/^\ze\S/ contains=ALL fold'
 execute 'syn match  indentBullet0 /^'.s:bullets.'/ containedin=indent0 contained'
 hi def link indentBullet0 Label
@@ -285,8 +285,8 @@ hi def link topLevelUnderline Structure
 hi def link snippetDelimiter Folded
 
 function! s:detect(l1, l2)
-  let b:journal_types = get(b:, 'journal_types', {})
-  let types = filter(map(getline(a:l1, a:l2), 'matchstr(v:val, ''^\s*\%(```\|--\+\)\zs\S*$'')'), '!empty(v:val) && !has_key(b:journal_types, v:val)')
+  let b:finn_types = get(b:, 'finn_types', {})
+  let types = filter(map(getline(a:l1, a:l2), 'matchstr(v:val, ''^\s*\%(```\|--\+\)\zs\S*$'')'), '!empty(v:val) && !has_key(b:finn_types, v:val)')
 
   for lang in types
     call s:load(lang)
@@ -295,7 +295,7 @@ function! s:detect(l1, l2)
 endfunction
 
 function! s:load(lang)
-  let b:journal_types[a:lang] = 1
+  let b:finn_types[a:lang] = 1
   let syns = split(globpath(&rtp, "syntax/".a:lang.".vim"), "\n")
   if empty(syns)
     return
@@ -330,9 +330,9 @@ function! s:load(lang)
 endfunction
 
 function! s:init()
-  let max_indent = get(g:, 'journal#max_indent', 10)
+  let max_indent = get(g:, 'finn#max_indent', 10)
   let colors = s:extract_colors(max_indent)
-  let shift = get(g:, 'journal#color_shift', max_indent / 2)
+  let shift = get(g:, 'finn#color_shift', max_indent / 2)
   for i in range(1, max_indent)
     let indent = i * &tabstop
     let allbut = 'ALLBUT,@NoSpell,topLevel,'.join(map(range(1, i), '"indent".v:val'), ',')
@@ -351,7 +351,7 @@ function! s:init()
   syn spell toplevel
 endfunction
 
-augroup journal
+augroup finn
   autocmd!
   autocmd ColorScheme * call s:init()
   if exists('##TextChangedI')
@@ -364,5 +364,5 @@ augroup END
 call s:init()
 call s:detect(1, '$')
 
-let b:current_syntax = 'journal'
+let b:current_syntax = 'finn'
 
