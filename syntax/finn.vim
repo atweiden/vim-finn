@@ -246,6 +246,9 @@ syn region sectionalLink oneline matchgroup=sectionalLinkSign start="|\ze[^[:bla
 hi def link sectionalLink Identifier
 hi def link sectionalLinkSign NonText
 
+syn match sectionalInline @\(^\s*§\s[^[:return:]]*\)@
+hi def link sectionalInline Statement
+
 syn match file @\(^\|\s\)\zs\(file://\)\?[/~].\{-}\ze\(:\|\\\@<!\s\|$\)@
 hi def link file PreProc
 
