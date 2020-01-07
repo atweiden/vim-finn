@@ -1,5 +1,5 @@
 " Copyright (c) 2019 Junegunn Choi
-" Copyright (c) 2019 Andy Weidenbaum
+" Copyright (c) 2020 Andy Weidenbaum
 "
 " MIT License
 "
