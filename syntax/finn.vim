@@ -230,6 +230,9 @@ syn region blockSectional matchgroup=snippetDelimiter start="^\s*\zs```\s[^[:ret
 syn region blockSectional matchgroup=snippetDelimiter start="^\s*\zs--\+\s[^[:return:]]*$" end="^\s*\zs--\+$"
 hi def link blockSectional String
 
+syn match blockQuoteCode /\v^.*\|\s\s\s\s\s.*$/hs=s+5
+hi def link blockQuoteCode Comment
+
 syn region strong oneline matchgroup=strongSign start="\*\ze[^[:blank:]]" end="[^[:blank:]]\zs\*" contains=@Spell
 hi def link strong Question
 hi def link strongSign Exception
