@@ -59,8 +59,8 @@ endfunction
 " <C-U> is required to correctly handle counts
 nnoremap <buffer> <silent> [[ :<c-u>call <sid>progress(0, v:count1)<CR>
 nnoremap <buffer> <silent> ]] :<c-u>call <sid>progress(1, v:count1)<CR>
-xnoremap <buffer> <silent> [[ <esc>:<c-u>call <sid>progress(0, v:count1)<CR>mzgv`z
-xnoremap <buffer> <silent> ]] <esc>:<c-u>call <sid>progress(1, v:count1)<CR>mzgv`z
+xnoremap <buffer> <silent> [[ :<c-u>call <sid>progress(0, v:count1)<CR>``gv``
+xnoremap <buffer> <silent> ]] :<c-u>call <sid>progress(1, v:count1)<CR>``gv``
 
 nnoremap <buffer> ][ <nop>
 nnoremap <buffer> [] <nop>
@@ -78,8 +78,8 @@ endfunction
 
 nnoremap <buffer> <silent> ( :<c-u>call <sid>bullets_progress(0, v:count1)<CR>
 nnoremap <buffer> <silent> ) :<c-u>call <sid>bullets_progress(1, v:count1)<CR>
-xnoremap <buffer> <silent> ( <esc>:<c-u>call <sid>bullets_progress(0, v:count1)<CR>mzgv`z
-xnoremap <buffer> <silent> ) <esc>:<c-u>call <sid>bullets_progress(1, v:count1)<CR>mzgv`z
+xnoremap <buffer> <silent> ( :<c-u>call <sid>bullets_progress(0, v:count1)<CR>``gv``
+xnoremap <buffer> <silent> ) :<c-u>call <sid>bullets_progress(1, v:count1)<CR>``gv``
 
 function! s:bullet()
   let line = getline('.')
