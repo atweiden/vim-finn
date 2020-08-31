@@ -62,24 +62,26 @@ nnoremap <buffer> <silent> ]] :<c-u>call <sid>progress(1, v:count1)<CR>
 xnoremap <buffer> <silent> [[ :<c-u>call <sid>progress(0, v:count1)<CR>``gv``
 xnoremap <buffer> <silent> ]] :<c-u>call <sid>progress(1, v:count1)<CR>``gv``
 
-nnoremap <buffer> ][ <nop>
-nnoremap <buffer> [] <nop>
-xnoremap <buffer> ][ <nop>
-xnoremap <buffer> [] <nop>
-
-function! s:bullets_progress(fw, cnt)
+function! s:bullets_progress(top, fw, cnt)
   let cnt = a:cnt
   while cnt
-    call search(printf('^\s*\zs%s', finn#_bullets()),
+    call search(printf('^%s\zs%s',
+                    \ a:top ? '' : '\s*',
+                    \ finn#_bullets()),
               \ printf('%ssz', a:fw ? '' : 'b'))
     let cnt -= 1
   endwhile
 endfunction
 
-nnoremap <buffer> <silent> ( :<c-u>call <sid>bullets_progress(0, v:count1)<CR>
-nnoremap <buffer> <silent> ) :<c-u>call <sid>bullets_progress(1, v:count1)<CR>
-xnoremap <buffer> <silent> ( :<c-u>call <sid>bullets_progress(0, v:count1)<CR>``gv``
-xnoremap <buffer> <silent> ) :<c-u>call <sid>bullets_progress(1, v:count1)<CR>``gv``
+nnoremap <buffer> <silent> ( :<c-u>call <sid>bullets_progress(0, 0, v:count1)<CR>
+nnoremap <buffer> <silent> ) :<c-u>call <sid>bullets_progress(0, 1, v:count1)<CR>
+xnoremap <buffer> <silent> ( :<c-u>call <sid>bullets_progress(0, 0, v:count1)<CR>``gv``
+xnoremap <buffer> <silent> ) :<c-u>call <sid>bullets_progress(0, 1, v:count1)<CR>``gv``
+
+nnoremap <buffer> <silent> [] :<c-u>call <sid>bullets_progress(1, 0, v:count1)<CR>
+nnoremap <buffer> <silent> ][ :<c-u>call <sid>bullets_progress(1, 1, v:count1)<CR>
+xnoremap <buffer> <silent> [] :<c-u>call <sid>bullets_progress(1, 0, v:count1)<CR>``gv``
+xnoremap <buffer> <silent> ][ :<c-u>call <sid>bullets_progress(1, 1, v:count1)<CR>``gv``
 
 function! s:bullet()
   let line = getline('.')
