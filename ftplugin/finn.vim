@@ -37,6 +37,11 @@ function! s:indent()
                    \ "str2nr(substitute(v:val, '[^0-9]', '', 'g'))"), 0))
 endfunction
 
+function! s:repeatable(function) abort
+  let &operatorfunc = a:function
+  return 'g@l'
+endfunction
+
 function! s:progress(fw, cnt)
   let cnt = a:cnt
   while cnt
@@ -56,11 +61,13 @@ function! s:progress(fw, cnt)
   endwhile
 endfunction
 
-" <C-U> is required to correctly handle counts
-nnoremap <buffer> <silent> [[ :<c-u>call <sid>progress(0, v:count1)<CR>
-nnoremap <buffer> <silent> ]] :<c-u>call <sid>progress(1, v:count1)<CR>
-xnoremap <buffer> <silent> [[ :<c-u>call <sid>progress(0, v:count1)<CR>``gv``
-xnoremap <buffer> <silent> ]] :<c-u>call <sid>progress(1, v:count1)<CR>``gv``
+function! s:progress_fw(ignore)
+  call s:progress(1, v:count1)
+endfunction
+
+function! s:progress_bw(ignore)
+  call s:progress(0, v:count1)
+endfunction
 
 function! s:bullets_progress(top, fw, cnt)
   let cnt = a:cnt
@@ -73,15 +80,36 @@ function! s:bullets_progress(top, fw, cnt)
   endwhile
 endfunction
 
-nnoremap <buffer> <silent> ( :<c-u>call <sid>bullets_progress(0, 0, v:count1)<CR>
-nnoremap <buffer> <silent> ) :<c-u>call <sid>bullets_progress(0, 1, v:count1)<CR>
-xnoremap <buffer> <silent> ( :<c-u>call <sid>bullets_progress(0, 0, v:count1)<CR>``gv``
-xnoremap <buffer> <silent> ) :<c-u>call <sid>bullets_progress(0, 1, v:count1)<CR>``gv``
+function! s:bullets_progress_fw(ignore)
+  call s:bullets_progress(0, 1, v:count1)
+endfunction
 
-nnoremap <buffer> <silent> [] :<c-u>call <sid>bullets_progress(1, 0, v:count1)<CR>
-nnoremap <buffer> <silent> ][ :<c-u>call <sid>bullets_progress(1, 1, v:count1)<CR>
-xnoremap <buffer> <silent> [] :<c-u>call <sid>bullets_progress(1, 0, v:count1)<CR>``gv``
-xnoremap <buffer> <silent> ][ :<c-u>call <sid>bullets_progress(1, 1, v:count1)<CR>``gv``
+function! s:bullets_progress_bw(ignore)
+  call s:bullets_progress(0, 0, v:count1)
+endfunction
+
+function! s:bullets_progress_fw_top(ignore)
+  call s:bullets_progress(1, 1, v:count1)
+endfunction
+
+function! s:bullets_progress_bw_top(ignore)
+  call s:bullets_progress(1, 0, v:count1)
+endfunction
+
+nnoremap <buffer> <silent> <expr> [[ <sid>repeatable('<sid>progress_bw')
+nnoremap <buffer> <silent> <expr> ]] <sid>repeatable('<sid>progress_fw')
+xnoremap <buffer> <silent> <expr> [[ '<esc>:<c-u>execute "normal ' . v:count . '[[mz``gv`z"<CR>'
+xnoremap <buffer> <silent> <expr> ]] '<esc>:<c-u>execute "normal ' . v:count . ']]mz``gv`z"<CR>'
+
+nnoremap <buffer> <silent> <expr> ( <sid>repeatable('<sid>bullets_progress_bw')
+nnoremap <buffer> <silent> <expr> ) <sid>repeatable('<sid>bullets_progress_fw')
+xnoremap <buffer> <silent> <expr> ( '<esc>:<c-u>execute "normal ' . v:count . '(mz``gv`z"<CR>'
+xnoremap <buffer> <silent> <expr> ) '<esc>:<c-u>execute "normal ' . v:count . ')mz``gv`z"<CR>'
+
+nnoremap <buffer> <silent> <expr> [] <sid>repeatable('<sid>bullets_progress_bw_top')
+nnoremap <buffer> <silent> <expr> ][ <sid>repeatable('<sid>bullets_progress_fw_top')
+xnoremap <buffer> <silent> <expr> [] '<esc>:<c-u>execute "normal ' . v:count . '[]mz``gv`z"<CR>'
+xnoremap <buffer> <silent> <expr> ][ '<esc>:<c-u>execute "normal ' . v:count . '][mz``gv`z"<CR>'
 
 function! s:bullet()
   let line = getline('.')
