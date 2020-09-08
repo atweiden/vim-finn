@@ -98,18 +98,18 @@ endfunction
 
 nnoremap <buffer> <silent> <expr> [[ <sid>repeatable('<sid>progress_bw')
 nnoremap <buffer> <silent> <expr> ]] <sid>repeatable('<sid>progress_fw')
-xnoremap <buffer> <silent> <expr> [[ '<esc>:<c-u>execute "normal ' . v:count . '[[mz``gv`z"<CR>'
-xnoremap <buffer> <silent> <expr> ]] '<esc>:<c-u>execute "normal ' . v:count . ']]mz``gv`z"<CR>'
+xnoremap <buffer> <silent> <expr> [[ '<esc>:<c-u>execute "normal ' . v:count . '[[mzgv`z"<CR>'
+xnoremap <buffer> <silent> <expr> ]] '<esc>:<c-u>execute "normal ' . v:count . ']]mzgv`z"<CR>'
 
 nnoremap <buffer> <silent> <expr> ( <sid>repeatable('<sid>bullets_progress_bw')
 nnoremap <buffer> <silent> <expr> ) <sid>repeatable('<sid>bullets_progress_fw')
-xnoremap <buffer> <silent> <expr> ( '<esc>:<c-u>execute "normal ' . v:count . '(mz``gv`z"<CR>'
-xnoremap <buffer> <silent> <expr> ) '<esc>:<c-u>execute "normal ' . v:count . ')mz``gv`z"<CR>'
+xnoremap <buffer> <silent> <expr> ( '<esc>:<c-u>execute "normal ' . v:count . '(mzgv`z"<CR>'
+xnoremap <buffer> <silent> <expr> ) '<esc>:<c-u>execute "normal ' . v:count . ')mzgv`z"<CR>'
 
 nnoremap <buffer> <silent> <expr> [] <sid>repeatable('<sid>bullets_progress_bw_top')
 nnoremap <buffer> <silent> <expr> ][ <sid>repeatable('<sid>bullets_progress_fw_top')
-xnoremap <buffer> <silent> <expr> [] '<esc>:<c-u>execute "normal ' . v:count . '[]mz``gv`z"<CR>'
-xnoremap <buffer> <silent> <expr> ][ '<esc>:<c-u>execute "normal ' . v:count . '][mz``gv`z"<CR>'
+xnoremap <buffer> <silent> <expr> [] '<esc>:<c-u>execute "normal ' . v:count . '[]mzgv`z"<CR>'
+xnoremap <buffer> <silent> <expr> ][ '<esc>:<c-u>execute "normal ' . v:count . '][mzgv`z"<CR>'
 
 function! s:bullet()
   let line = getline('.')
