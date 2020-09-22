@@ -133,5 +133,7 @@ function! s:bullet()
   return ret.bullet
 endfunction
 
-inoremap <buffer> <expr> <esc><cr> <sid>bullet()
-nnoremap <buffer> <expr> <esc><cr> 'A'.<sid>bullet()
+if finn#config#enable_bullet_mappings()
+  inoremap <buffer> <expr> <esc><cr> <sid>bullet()
+  nnoremap <buffer> <expr> <esc><cr> 'A' . <sid>bullet()
+endif
