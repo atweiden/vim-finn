@@ -1,6 +1,10 @@
 let s:cpo_save = &cpo
 set cpo&vim
 
+function! finn#config#bullet_key() abort
+  return get(g:, 'finn_bullet_key', '<esc><cr>')
+endfunction
+
 function! finn#config#enable_bullet_mappings() abort
   return get(g:, 'finn_enable_bullet_mappings', 1)
 endfunction

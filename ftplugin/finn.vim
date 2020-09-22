@@ -134,6 +134,6 @@ function! s:bullet()
 endfunction
 
 if finn#config#enable_bullet_mappings()
-  inoremap <buffer> <expr> <esc><cr> <sid>bullet()
-  nnoremap <buffer> <expr> <esc><cr> 'A' . <sid>bullet()
+  execute 'inoremap <buffer> <expr> ' . finn#config#bullet_key() . ' <sid>bullet()'
+  execute 'nnoremap <buffer> <expr> ' . finn#config#bullet_key() . " 'A' . <sid>bullet()"
 endif
